@@ -1,0 +1,22 @@
+.album-card {
+  width: 15.6rem;
+  height: 21rem;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  margin: 1rem 2rem;
+
+  .album-details {
+    padding: 0rem 0.5rem;
+
+    h3 {
+      font-size: 1rem;
+      font-weight: 100;
+      margin: 0;
+
+      &.album-name {
+        font-size: 1.2rem;
+        font-weight: 400;
+      }
+    }
+  }
+}

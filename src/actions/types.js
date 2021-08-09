@@ -1,0 +1,5 @@
+export const SEARCH_ARTISTS = 'SEARCH_ARTISTS';
+export const GO_TO_ARTIST = 'GO_TO_ARTIST';
+export const LOAD_TOP_ALBUMS = 'LOAD_TOP_ALBUMS';
+export const SET_LOADING = 'SET_LOADING';
+export const APP_LAYOUT_ERROR = 'APP_LAYOUT_ERROR';
