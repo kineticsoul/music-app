@@ -1,10 +1,11 @@
-import { SEARCH_ARTISTS, SET_LOADING, LOAD_TOP_ALBUMS, APP_LAYOUT_ERROR } from "../actions/types";
+import { SEARCH_ARTISTS, SET_LOADING, LOAD_TOP_ALBUMS, APP_LAYOUT_ERROR, GET_ARITST, GET_TOP_TRACKS } from "../actions/types";
 
 
 const initialState = {
   search_results: null,
   albums: null,
   artist: null,
+  top_tracks: null,
   error: null,
   loading: true
 };
@@ -28,6 +29,18 @@ const reducer = (state = initialState, action) => {
       return {
           ...state,
           loading: true
+      }
+    case GET_ARITST:
+      return {
+        ...state,
+        artist: action.payload,
+        loading: false
+      }
+    case GET_TOP_TRACKS:
+      return {
+        ...state,
+        top_tracks: action.payload,
+        loading: false
       }
     case APP_LAYOUT_ERROR:
       console.error(action.payload);

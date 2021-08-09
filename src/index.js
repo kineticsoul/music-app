@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
+import LandingPage from './pages/landing-page/landing-page';
+import ArtistDetails from './pages/artist-details/artist-details';
+
 
 const Home = () => (
   <Provider store={store}>
-    <App />
+    <Router>
+            <div>
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/artist/:id" component={ArtistDetails} />
+            </div>
+        </Router>
   </Provider>
 );
 
