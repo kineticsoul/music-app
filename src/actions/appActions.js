@@ -94,7 +94,7 @@ export const getArtistTopTacks = (id) => async dispatch => {
 export const getArtistTopAlbums = (id) => async dispatch => {
 
   setLoading();
-  const fullUrl = baseUrl + 'https://api.deezer.com/artist/' + id + '/top?limit=5';
+  const fullUrl = baseUrl + 'https://api.deezer.com/artist/' + id + '/albums?limit=5';
   try {
     const response =  await axios.get(fullUrl);
 

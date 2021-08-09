@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
         artist: action.payload,
         loading: false
       }
-    case GET_ARTIST_TOP_ALBUMS:
+    case GET_ARTIST_TOP_TRACKS:
       return {
         ...state,
         top_tracks: action.payload,

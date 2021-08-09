@@ -30,6 +30,14 @@ const ArtistDetails = () => {
    return minutes+":"+seconds;
   }
 
+  function getReleaseYear(release_date) {
+    let tempDate = new Date(release_date);
+    
+    tempDate = tempDate.getFullYear();
+
+    return tempDate;
+  }
+
   // return if loading
   if (loading) {
     return(
@@ -73,7 +81,7 @@ const ArtistDetails = () => {
            </div>
          </div>
 
-         <div className='content-container'>
+         <div className='cards-container'>
           {artist_albums != null ?
           artist_albums.data.map((album) => 
           // Need to use component instead
@@ -81,7 +89,7 @@ const ArtistDetails = () => {
                <img src={album.cover_medium} alt='Album Cover' />
                 <div className='album-details'>
                   <h3 className='album-name'>{album.title}</h3>
-                  <h3>{album.artist.name}</h3>
+                  <p>{getReleaseYear(album.release_date)}</p>
                 </div>
             </div>
           ):null}
