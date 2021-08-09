@@ -1,4 +1,4 @@
-import { SEARCH_ARTISTS, LOAD_TOP_ALBUMS, APP_LAYOUT_ERROR, GET_ARITST, GET_TOP_TRACKS, SET_LOADING } from "./types";
+import { SEARCH_ARTISTS, LOAD_TOP_ALBUMS, APP_LAYOUT_ERROR, GET_ARITST, GET_ARTIST_TOP_TRACKS, SET_LOADING, GET_ARTIST_TOP_ALBUMS } from "./types";
 import axios from 'axios';
 
 //To avoid CORS errors
@@ -78,7 +78,7 @@ export const getArtistTopTacks = (id) => async dispatch => {
     const response =  await axios.get(fullUrl);
 
     dispatch({
-      type: GET_TOP_TRACKS,
+      type: GET_ARTIST_TOP_TRACKS,
       payload: response.data
     })
 
@@ -89,6 +89,28 @@ export const getArtistTopTacks = (id) => async dispatch => {
     })
   }
 }
+
+//Get top 5 albums from artist
+export const getArtistTopAlbums = (id) => async dispatch => {
+
+  setLoading();
+  const fullUrl = baseUrl + 'https://api.deezer.com/artist/' + id + '/top?limit=5';
+  try {
+    const response =  await axios.get(fullUrl);
+
+    dispatch({
+      type: GET_ARTIST_TOP_ALBUMS,
+      payload: response.data
+    })
+
+  } catch(error) {
+    dispatch({
+      type: APP_LAYOUT_ERROR,
+      payload: error
+    })
+  }
+}
+
 
 //Set loading to true
 export const setLoading = () => async dispatch => {

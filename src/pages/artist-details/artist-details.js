@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router';
 import SkateboardIcon from './../../assets/skateboarding.gif'
-import { getArtist, getArtistTopTacks } from '../../actions/appActions';
+import { getArtist, getArtistTopTacks, getArtistTopAlbums } from '../../actions/appActions';
 import './artist-details.scss';
 import HeaderBar from '../../components/header-bar/header-bar';
 
@@ -17,6 +17,7 @@ const ArtistDetails = () => {
   useEffect(() => {
     dispatch(getArtist(id));
     dispatch(getArtistTopTacks(id));
+    dispatch(getArtistTopAlbums(id));
   },[dispatch]);
 
   function getDuration(duration) {
