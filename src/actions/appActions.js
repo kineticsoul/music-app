@@ -9,6 +9,7 @@ export const searchArtists = (searchTerm) => async dispatch => {
 
   setLoading();
   const fullUrl = baseUrl + 'https://api.deezer.com/search?q=' + searchTerm;
+  console.log('Search Term is: ', searchTerm);
   try {    
     const response  = await axios.get(fullUrl);
 

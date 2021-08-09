@@ -1,0 +1,19 @@
+  .header-bar-container {
+    height: 4rem;
+    padding: 1rem 3rem;
+    background-color: #2f3640;
+    display: flex;
+    flex-direction: row;
+
+    .profile-icon {
+      margin-right: 5rem;
+      border-radius: 50%;
+    }
+
+    .search-input {
+      border-radius: 5rem;
+      width: 40vw;
+      padding-left: 1.5rem;
+      font-size: 1.7rem;
+    }
+  }

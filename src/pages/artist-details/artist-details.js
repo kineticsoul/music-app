@@ -4,15 +4,15 @@ import { useParams } from 'react-router';
 import SkateboardIcon from './../../assets/skateboarding.gif'
 import { getArtist, getArtistTopTacks } from '../../actions/appActions';
 import './artist-details.scss';
+import HeaderBar from '../../components/header-bar/header-bar';
 
 
 const ArtistDetails = () => {
   let {id} = useParams();
   const appState = useSelector(state => state.app);
   const dispatch = useDispatch();
-
   
-  const {albums, loading, top_tracks, artist} = appState;
+  const {artist_albums, loading, top_tracks, artist} = appState;
 
   useEffect(() => {
     dispatch(getArtist(id));
@@ -32,19 +32,18 @@ const ArtistDetails = () => {
   // return if loading
   if (loading) {
     return(
-      <div className='loader'>
-          <img src={SkateboardIcon} alt='loader' />
+      <div className='page-wrapper'>
+        <HeaderBar />
+        <div className='loader'>
+            <img src={SkateboardIcon} alt='loader' />
+        </div>
       </div>
     )
   }
 
   return(
-    <div className='landing-page-wrapper'>
-      <div className='header-bar-container'>
-        <img className='profile-icon' src='https://e-cdns-images.dzcdn.net/images/user//32x32-000000-80-0-0.jpg' alt='profile icon'/>
-        <input type='text' className='search-input' placeholder='search'/>
-      </div>
-
+    <div className='page-wrapper'>
+      <HeaderBar />
       <div className='content-container'>
          <div className='top-tracks-container'>
           {artist != null ? 
@@ -72,6 +71,20 @@ const ArtistDetails = () => {
              </ol>
            </div>
          </div>
+
+         <div className='content-container'>
+          {artist_albums != null ?
+          artist_albums.data.map((album) => 
+          // Need to use component instead
+            <div className='album-card'>
+               <img src={album.cover_medium} alt='Album Cover' />
+                <div className='album-details'>
+                  <h3 className='album-name'>{album.title}</h3>
+                  <h3>{album.artist.name}</h3>
+                </div>
+            </div>
+          ):null}
+        </div>
       </div>
     </div>
   );
